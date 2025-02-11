@@ -1,5 +1,6 @@
 <script>
   import Product from './Product.svelte';
+  import Modal from './Modal.svelte';
 
   let products = [
     {
@@ -23,3 +24,8 @@
   <!-- Parameters that does not exist (id) in the component can be passed in but cannot be used. -->
   <Product {...product} on:add-to-cart={addToCart} on:delete={deleteProduct} />
 {/each}
+
+<Modal>
+  <h1>Hello!</h1>
+  <p>This works!</p>
+</Modal>
