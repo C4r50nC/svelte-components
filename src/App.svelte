@@ -10,6 +10,8 @@
     },
   ];
 
+  let showModal = false;
+
   function addToCart(event) {
     console.log(event.detail);
   }
@@ -25,9 +27,16 @@
   <Product {...product} on:add-to-cart={addToCart} on:delete={deleteProduct} />
 {/each}
 
-<Modal>
-  <h1 slot="header">Hello!</h1>
-  <p>This works!</p>
-  <!-- Below overrides the default tags in footer slot -->
-  <button slot="footer">Confirm</button>
-</Modal>
+<button on:click={() => (showModal = true)}>Show Modal</button>
+
+{#if showModal}
+  <Modal
+    on:cancel={() => (showModal = false)}
+    on:close={() => (showModal = false)}
+  >
+    <h1 slot="header">Hello!</h1>
+    <p>This works!</p>
+    <!-- Below overrides the default tags in footer slot -->
+    <button slot="footer" on:click={() => (showModal = false)}>Confirm</button>
+  </Modal>
+{/if}
