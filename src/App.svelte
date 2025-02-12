@@ -26,6 +26,8 @@
 {/each}
 
 <Modal>
-  <h1>Hello!</h1>
+  <h1 slot="header">Hello!</h1>
   <p>This works!</p>
+  <!-- Below overrides the default tags in footer slot -->
+  <button slot="footer">Confirm</button>
 </Modal>
