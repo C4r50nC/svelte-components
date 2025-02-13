@@ -30,13 +30,20 @@
 <button on:click={() => (showModal = true)}>Show Modal</button>
 
 {#if showModal}
+  <!-- closeable is the defined variable name in App.svelte with received value  -->
+  <!-- didAgree is the custom attribute name for passing in data from child component (Modal.svelte) -->
   <Modal
     on:cancel={() => (showModal = false)}
     on:close={() => (showModal = false)}
+    let:didAgree={closeable}
   >
     <h1 slot="header">Hello!</h1>
     <p>This works!</p>
     <!-- Below overrides the default tags in footer slot -->
-    <button slot="footer" on:click={() => (showModal = false)}>Confirm</button>
+    <button
+      slot="footer"
+      on:click={() => (showModal = false)}
+      disabled={!closeable}>Confirm</button
+    >
   </Modal>
 {/if}
